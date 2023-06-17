@@ -1,24 +1,40 @@
 package com.example.nisumchallenge.users.builder;
 
+import com.example.nisumchallenge.users.dtos.PhoneDto;
 import com.example.nisumchallenge.users.dtos.UserRequestDto;
 import com.example.nisumchallenge.users.dtos.UserResponseDto;
+import com.example.nisumchallenge.users.entities.PhoneEntity;
 import com.example.nisumchallenge.users.entities.UserEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserBuilder {
 
   public static UserEntity buildUserEntity(UserRequestDto requestDto) {
-    return UserEntity.builder()
+
+    UserEntity userEntity = UserEntity.builder()
       .uuid(UUID.randomUUID().toString())
       .name(requestDto.getName())
       .email(requestDto.getEmail())
       .password(requestDto.getPassword())
-      .phone(requestDto.getPhone())
       .build();
+
+    List<PhoneEntity> phoneEntities = requestDto.getPhones().stream()
+      .map(phoneDto -> PhoneEntity.builder()
+        .number(phoneDto.getNumber())
+        .cityCode(phoneDto.getCityCode())
+        .countryCode(phoneDto.getCountryCode())
+        .userEntity(userEntity)
+        .build())
+      .toList();
+
+    userEntity.setPhones(phoneEntities);
+
+    return userEntity;
   }
 
   public static UserResponseDto buildUserResponseDto(UserEntity userEntity) {
@@ -27,7 +43,14 @@ public class UserBuilder {
       .name(userEntity.getName())
       .email(userEntity.getEmail())
       .password(userEntity.getPassword())
-      .phone(userEntity.getPhone())
+      .phones(userEntity.getPhones().stream()
+        .map(phoneEntity -> PhoneDto.builder()
+          .id(phoneEntity.getId())
+          .number(phoneEntity.getNumber())
+          .cityCode(phoneEntity.getCityCode())
+          .countryCode(phoneEntity.getCountryCode())
+          .build())
+        .toList())
       .build();
   }
 

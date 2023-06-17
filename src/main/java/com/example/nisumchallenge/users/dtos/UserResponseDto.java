@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Builder
 @Setter
 @Getter
@@ -14,5 +16,5 @@ public class UserResponseDto {
   private String name;
   private String email;
   private String password;
-  private String phone;
+  private List<PhoneDto> phones;
 }

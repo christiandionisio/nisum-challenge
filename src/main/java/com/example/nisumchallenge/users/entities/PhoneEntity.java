@@ -1,12 +1,13 @@
 package com.example.nisumchallenge.users.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +16,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,25 +23,26 @@ import java.util.List;
 @Getter
 @ToString
 @Entity
-@Table(name = "USER_TABLE")
-public class UserEntity {
+@Table(name = "PHONE_TABLE")
+public class PhoneEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column(name = "uuid", unique = true)
-  private String uuid;
+  @Column(name = "number")
+  private String number;
 
-  @Column(name = "name")
-  private String name;
+  @Column(name = "city_code")
+  private String cityCode;
 
-  @Column(name = "email", unique = true)
-  private String email;
+  @Column(name = "country_code")
+  private String countryCode;
 
-  @Column(name = "password")
-  private String password;
-
-  @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "user_id", nullable = false)
   @ToString.Exclude
-  List<PhoneEntity> phones;
+  private UserEntity userEntity;
+
+
 }

@@ -5,15 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Builder
 @Setter
 @Getter
 @ToString
-public class UserRequestDto {
-  private String name;
-  private String email;
-  private String password;
-  private List<PhoneDto> phones;
+public class PhoneDto {
+
+  private Integer id;
+  private String number;
+  private String cityCode;
+  private String countryCode;
+
+
 }
