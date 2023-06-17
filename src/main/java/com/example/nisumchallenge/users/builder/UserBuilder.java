@@ -8,6 +8,7 @@ import com.example.nisumchallenge.users.entities.UserEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,11 +17,15 @@ public class UserBuilder {
 
   public static UserEntity buildUserEntity(UserRequestDto requestDto) {
 
+    LocalDateTime currentLocalDateTime = LocalDateTime.now();
+
     UserEntity userEntity = UserEntity.builder()
       .uuid(UUID.randomUUID().toString())
       .name(requestDto.getName())
       .email(requestDto.getEmail())
       .password(requestDto.getPassword())
+      .createdDate(currentLocalDateTime)
+      .lastLogin(currentLocalDateTime)
       .build();
 
     List<PhoneEntity> phoneEntities = requestDto.getPhones().stream()

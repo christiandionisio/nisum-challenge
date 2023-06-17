@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -41,6 +42,15 @@ public class UserEntity {
 
   @Column(name = "password")
   private String password;
+
+  @Column(name = "created_date")
+  private LocalDateTime createdDate;
+
+  @Column(name = "modified_date")
+  private LocalDateTime modifiedDate;
+
+  @Column(name = "last_login")
+  private LocalDateTime lastLogin;
 
   @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
   @ToString.Exclude
