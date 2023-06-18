@@ -60,6 +60,9 @@ public class UserBuilder {
         .toList())
       .isActive(userEntity.getIsActive())
       .token(userEntity.getToken())
+      .created(userEntity.getCreatedDate())
+      .modified(userEntity.getModifiedDate())
+      .lastLogin(userEntity.getLastLogin())
       .build();
   }
 

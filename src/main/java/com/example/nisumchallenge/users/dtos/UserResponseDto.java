@@ -1,10 +1,12 @@
 package com.example.nisumchallenge.users.dtos;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -12,11 +14,34 @@ import java.util.List;
 @Getter
 @ToString
 public class UserResponseDto {
+
+  @Schema(name = "id", description = "Identifier for user (UUID)", example = "3c2fad53-83be-417c-a209-89f0c1596d68")
   private String id;
+
+  @Schema(name = "id", description = "Name for user creation", example = "Christian")
   private String name;
+
+  @Schema(name = "email", description = "Email for user creation", example = "christian@gmail.com")
   private String email;
+
+  @Schema(name = "password", description = "Password for user creation", example = "Admin$2023")
   private String password;
+
+  @Schema(name = "phones", description = "Phones list for user creation")
   private List<PhoneDto> phones;
+
+  @Schema(name = "created", description = "Creation date of user", example = "2023-06-17T22:23:46.24338")
+  private LocalDateTime created;
+
+  @Schema(name = "created", description = "Modification date of user", example = "2023-06-17T22:23:46.24338")
+  private LocalDateTime modified;
+
+  @Schema(name = "lastLogin", description = "Last login date of user", example = "2023-06-17T22:23:46.24338")
+  private LocalDateTime lastLogin;
+
+  @Schema(name = "token", description = "Token for user creation", example = "3c2fad53-83be-417c-a209-89f0c1596d68")
   private String token;
+
+  @Schema(name = "isActive", description = "Status for user creation", example = "true")
   private Boolean isActive;
 }
