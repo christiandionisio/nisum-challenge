@@ -17,4 +17,6 @@ public class UserResponseDto {
   private String email;
   private String password;
   private List<PhoneDto> phones;
+  private String token;
+  private Boolean isActive;
 }

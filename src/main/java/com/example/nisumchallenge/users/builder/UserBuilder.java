@@ -26,6 +26,8 @@ public class UserBuilder {
       .password(requestDto.getPassword())
       .createdDate(currentLocalDateTime)
       .lastLogin(currentLocalDateTime)
+      .isActive(Boolean.TRUE)
+      .token(UUID.randomUUID().toString())
       .build();
 
     List<PhoneEntity> phoneEntities = requestDto.getPhones().stream()
@@ -56,6 +58,8 @@ public class UserBuilder {
           .countryCode(phoneEntity.getCountryCode())
           .build())
         .toList())
+      .isActive(userEntity.getIsActive())
+      .token(userEntity.getToken())
       .build();
   }
 

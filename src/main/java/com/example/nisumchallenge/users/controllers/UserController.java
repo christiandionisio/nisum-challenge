@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/api/users")
@@ -20,7 +21,12 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody UserRequestDto requestDto) {
-    return ResponseEntity.ok().body(userService.createUser(requestDto));
+    UserResponseDto responseDto = userService.createUser(requestDto);
+    return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest()
+        .path("/{id}")
+        .buildAndExpand(responseDto.getId())
+        .toUri())
+      .body(responseDto);
   }
 
 }
