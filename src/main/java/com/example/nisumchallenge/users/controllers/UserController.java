@@ -3,6 +3,7 @@ package com.example.nisumchallenge.users.controllers;
 import com.example.nisumchallenge.users.dtos.UserRequestDto;
 import com.example.nisumchallenge.users.dtos.UserResponseDto;
 import com.example.nisumchallenge.users.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UserController {
   private final UserService userService;
 
   @PostMapping
-  public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto requestDto) {
+  public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody UserRequestDto requestDto) {
     return ResponseEntity.ok().body(userService.createUser(requestDto));
   }
 
