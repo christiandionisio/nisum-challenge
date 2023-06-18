@@ -18,7 +18,7 @@ public class UserRequestDto {
   @Schema(name = "name", description = "Name for user creation", example = "Christian")
   private String name;
 
-  @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "El formato del correo electrónico no es válido")
+  @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El formato del correo electrónico no es válido")
   @Schema(name = "email", description = "Email for user creation", example = "christian@gmail.com")
   private String email;
 
