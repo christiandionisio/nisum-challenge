@@ -11,6 +11,11 @@ Para construir y ejecutar la aplicación necesita lo siguiente:
 
 ## Ejecutar la aplicación localmente
 
+Primero debe clonar el proyecto
+```shell
+git clone https://github.com/christiandionisio/nisum-challenge
+```
+
 Para levantar la aplicación puede ejecutar el siguiente comando en el directorio raíz del proyecto:
 
 ```shell
