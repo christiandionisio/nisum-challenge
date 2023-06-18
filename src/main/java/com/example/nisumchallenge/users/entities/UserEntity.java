@@ -31,7 +31,7 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column(name = "uuid", unique = true)
+  @Column(name = "uuid")
   private String uuid;
 
   @Column(name = "name")
@@ -52,7 +52,13 @@ public class UserEntity {
   @Column(name = "last_login")
   private LocalDateTime lastLogin;
 
+  @Column(name = "is_active")
+  private Boolean isActive;
+
+  @Column(name = "token")
+  private String token;
+
   @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
   @ToString.Exclude
-  List<PhoneEntity> phones;
+  private List<PhoneEntity> phones;
 }
