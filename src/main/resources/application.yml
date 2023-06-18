@@ -16,3 +16,8 @@ validations-dto:
   user-request:
     #email-format: "^.{8,}$"
     email-format: "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
+
+users:
+  openapi:
+    dev-url: http://localhost:8080
+    prod-url: http://localhost:8080
