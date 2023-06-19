@@ -30,7 +30,7 @@ public class UserController {
     description = "Post a user object. The response is UserResponseDto object with id, name, phones and isActive status.")
   @ApiResponse(responseCode = "200",
     content = { @Content(schema = @Schema(implementation = UserResponseDto.class), mediaType = "application/json") })
-  @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) })
+  @ApiResponse(responseCode = "400", content = { @Content(schema = @Schema()) })
   @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) })
   public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody UserRequestDto requestDto) {
     UserResponseDto responseDto = userService.createUser(requestDto);

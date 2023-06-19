@@ -27,7 +27,6 @@ public class UserBuilder {
       .createdDate(currentLocalDateTime)
       .lastLogin(currentLocalDateTime)
       .isActive(Boolean.TRUE)
-      .token(UUID.randomUUID().toString())
       .build();
 
     List<PhoneEntity> phoneEntities = requestDto.getPhones().stream()

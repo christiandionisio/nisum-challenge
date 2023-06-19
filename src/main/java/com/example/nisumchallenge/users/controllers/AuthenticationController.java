@@ -30,7 +30,7 @@ public class AuthenticationController {
     description = "Post a LoginRequestDto object. The response is LoginResponseDto object with token.")
   @ApiResponse(responseCode = "200",
     content = { @Content(schema = @Schema(implementation = LoginResponseDto.class), mediaType = "application/json") })
-  @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) })
+  @ApiResponse(responseCode = "403", content = { @Content(schema = @Schema()) })
   @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) })
   public ResponseEntity<LoginResponseDto> authenticate(@RequestBody LoginRequestDto loginRequestDto) {
     return ResponseEntity.ok(authenticationService.login(loginRequestDto));

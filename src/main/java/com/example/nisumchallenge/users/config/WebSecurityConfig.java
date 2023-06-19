@@ -35,7 +35,6 @@ public class WebSecurityConfig {
           .requestMatchers(AntPathRequestMatcher.antMatcher("/swagger-ui/**")).permitAll()
           .requestMatchers(AntPathRequestMatcher.antMatcher("/swagger-ui.html")).permitAll()
           .requestMatchers(AntPathRequestMatcher.antMatcher("/v3/api-docs/**")).permitAll()
-//        .requestMatchers("/admin/**").hasRole("ADMIN")
         .anyRequest().authenticated()
       )
       .cors(Customizer.withDefaults())
