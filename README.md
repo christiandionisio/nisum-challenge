@@ -46,3 +46,8 @@ curl --location 'localhost:8080/api/users' \
 ## Estructura de tablas
 
 ![Image](assets/tablas.png)
+
+## Swagger Documentation
+Puede revisar la documentación swagger luego de levantar el proyecto en la siguiente url: http://localhost:8080/swagger-ui/index.html#/
+
+![swagger-image](assets/swagger.png)

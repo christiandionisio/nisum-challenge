@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Some Username\",\n    \"email\": \"username@domain.com\",\n    \"password\": \"Admin$123\",\n    \"phones\": [\n        {\n            \"number\": \"999888777\",\n            \"cityCode\": \"1\",\n            \"countryCode\": \"+51\"\n        }\n    ]\n}",
+					"raw": "{\n    \"name\": \"Christian\",\n    \"email\": \"username@domain.com\",\n    \"password\": \"Admin123$\",\n    \"phones\": [\n        {\n            \"number\": \"999888777\",\n            \"cityCode\": \"1\",\n            \"countryCode\": \"+51\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -29,6 +29,35 @@
 					"path": [
 						"api",
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"username@domain.com\",\n    \"password\": \"Admin123$\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
 					]
 				}
 			},
