@@ -1,4 +1,4 @@
-package com.example.nisumchallenge.filters;
+package com.example.nisumchallenge.users.filters;
 
 import com.example.nisumchallenge.users.utils.JwtUtilService;
 import jakarta.servlet.FilterChain;

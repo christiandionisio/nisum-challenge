@@ -1,6 +1,6 @@
 package com.example.nisumchallenge.users.config;
 
-import com.example.nisumchallenge.filters.JwtRequestFilter;
+import com.example.nisumchallenge.users.filters.JwtRequestFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
