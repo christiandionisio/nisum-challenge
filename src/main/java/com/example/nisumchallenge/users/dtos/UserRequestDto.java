@@ -1,6 +1,8 @@
 package com.example.nisumchallenge.users.dtos;
 
+import com.example.nisumchallenge.users.utils.Constants;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,15 +17,16 @@ import java.util.List;
 @ToString
 public class UserRequestDto {
 
+  @NotBlank(message = "El campo name no debe ir vacio")
   @Schema(name = "name", description = "Name for user creation", example = "Christian")
   private String name;
 
-  @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El formato del correo electrónico no es válido")
+  @Pattern(regexp = Constants.EMAIL_FORMAT, message = "El formato del correo electrónico no es válido")
   @Schema(name = "email", description = "Email for user creation", example = "christian@gmail.com")
   private String email;
 
-  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).+$", message = "El formato de la clave no es válido")
-  @Pattern(regexp = "^.{8,}$", message = "La cadena debe tener al menos 8 caracteres")
+  @Pattern(regexp = Constants.PASSWORD_FORMAT, message = "La contraseña debe tener por lo menos una mayúscula y un caracter especial")
+  @Pattern(regexp = Constants.PASSWORD_MIN_SIZE, message = "La contraseña debe tener al menos 8 caracteres")
   @Schema(name = "password", description = "Password for user creation", example = "Admin$2023")
   private String password;
 
