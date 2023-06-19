@@ -24,9 +24,6 @@ public class UserResponseDto {
   @Schema(name = "email", description = "Email for user creation", example = "christian@gmail.com")
   private String email;
 
-  @Schema(name = "password", description = "Password for user creation", example = "Admin$2023")
-  private String password;
-
   @Schema(name = "phones", description = "Phones list for user creation")
   private List<PhoneDto> phones;
 

@@ -49,7 +49,6 @@ public class UserBuilder {
       .id(userEntity.getUuid())
       .name(userEntity.getName())
       .email(userEntity.getEmail())
-      .password(userEntity.getPassword())
       .phones(userEntity.getPhones().stream()
         .map(phoneEntity -> PhoneDto.builder()
           .id(phoneEntity.getId())

@@ -29,7 +29,8 @@ public class WebSecurityConfig {
   SecurityFilterChain web(HttpSecurity http) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests(authorize ->
-        authorize.requestMatchers("/api/**").permitAll()
+        authorize.requestMatchers("/api/auth/**").permitAll()
+          .requestMatchers("/api/users/**").permitAll()
           .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 //        .requestMatchers("/admin/**").hasRole("ADMIN")
         .anyRequest().authenticated()

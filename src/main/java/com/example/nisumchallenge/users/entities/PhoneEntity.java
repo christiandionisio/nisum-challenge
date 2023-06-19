@@ -39,7 +39,7 @@ public class PhoneEntity {
   @Column(name = "country_code")
   private String countryCode;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
   @ToString.Exclude
   private UserEntity userEntity;

@@ -21,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     UserRecord userRecord = getByUser(username);
 
-    if (userRecord == null) {
+    if (userRecord == null || userRecord.isActive.equals(Boolean.FALSE)) {
       throw new UsernameNotFoundException(username);
     }
     return User
@@ -31,11 +31,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       .build();
   }
 
-  public record UserRecord(String username, String password, Set<String> roles) {}
+  public record UserRecord(String username, String password, Set<String> roles, Boolean isActive) {}
 
   public UserRecord getByUser(String username) {
     UserEntity userEntityDB = userRepository.findByEmail(username);
-    return new UserRecord(userEntityDB.getName(), userEntityDB.getPassword(), Set.of("ADMIN"));
+    return new UserRecord(userEntityDB.getName(),
+      userEntityDB.getPassword(),
+      Set.of("ADMIN"),
+      userEntityDB.getIsActive()
+    );
   }
 
 }
