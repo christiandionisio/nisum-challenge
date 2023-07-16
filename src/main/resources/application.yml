@@ -14,8 +14,9 @@ spring:
 
 validations-dto:
   user-request:
-    #email-format: "^.{8,}$"
-    email-format: "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
+    email-format: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+    password-format: ^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).+$
+    password-min-size: ^.{8,}$
 
 users:
   openapi:
