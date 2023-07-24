@@ -20,7 +20,6 @@ public class UserRequestDto {
   @Schema(name = "name", description = "Name for user creation", example = "Christian")
   private String name;
 
-//  @CustomPattern(regexp = "", message = "")
   @CustomPattern(patternPropertyKey = "validations-dto.user-request.email-format", message = "El formato del correo electrónico no es válido")
   @Schema(name = "email", description = "Email for user creation", example = "christian@gmail.com")
   private String email;
